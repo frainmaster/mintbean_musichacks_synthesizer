@@ -1,0 +1,73 @@
+body {
+	background-image: url("../../res/img/main.jpg");
+	font-family: Consolas;
+	color: #8fbc8f;
+}
+
+.container { text-align: center; }
+
+.synth-body {
+	width: 800px;
+	height: 500px;
+	background-image: url("../../res/img/synth_body.jpg");
+	border-radius: 10px;
+	margin: auto;
+}
+
+.synth-key-body {
+	width: 640px;
+	margin: auto;
+	padding-top: 15em;
+	display: flex;
+}
+
+.synth-key-set {
+	width: 490px;
+	display: flex;
+	/*margin: auto;*/
+}
+
+.synth-key {
+	border-radius: 5px;
+}
+
+.synth-key:hover {
+	cursor: pointer;
+}
+
+.set-white {
+	z-index: 10;
+	max-width: 490px;
+	margin: auto;
+}
+
+.key-white {
+	background-color: white;
+	width: calc(490px / 7);
+	border: 1px black solid;
+	height: 15em;
+}
+
+.key-white:hover {
+	background-color: beige;
+}
+
+.set-black {
+	z-index: 100;
+	position: fixed;
+	max-width: 490px;
+	margin-left: 110px;
+}
+
+.key-black {
+	background-color: black;
+	width: 50px;
+	height: 10em;
+	margin: 0px 10px;
+}
+
+.key-black:hover {
+	background-color: #404040;
+}
+
+.gap { visibility: hidden; }
