@@ -4,49 +4,38 @@
 	<title>Synthesizer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="res/css/materialize.min.css" media="screen,projection">
-	<link rel="stylesheet" type="text/css" href="res/css/main.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 	<div class="container">
 		<h2>Synthesizer</h2>
-		<p>By <a href="https://github.com/frainmaster">@frainmaster</a> & <a href="https://github.com/Ap0k4L1p5">@Ap0k4L1p5</a></p>
+		<p>By <a target="_blank" href="https://github.com/frainmaster">@frainmaster</a> & <a target="_blank" href="https://github.com/Ap0k4L1p5">@Ap0k4L1p5</a></p>
 		<div class="synth-body">
 			<div class="synth-key-body">
 				<div class="synth-key-set set-white">
-					<div class="synth-key key-white c"></div>
-					<div class="synth-key key-white d"></div>
-					<div class="synth-key key-white e"></div>
-					<div class="synth-key key-white f"></div>
-					<div class="synth-key key-white g"></div>
-					<div class="synth-key key-white a"></div>
-					<div class="synth-key key-white b"></div>
+					<div class="synth-key key-white" id="c"></div>
+					<div class="synth-key key-white" id="d"></div>
+					<div class="synth-key key-white" id="e"></div>
+					<div class="synth-key key-white" id="f"></div>
+					<div class="synth-key key-white" id="g"></div>
+					<div class="synth-key key-white" id="a"></div>
+					<div class="synth-key key-white" id="b"></div>
 				</div>
 				<div class="synth-key-set set-black">
-					<div class="synth-key key-black cs"></div>
-					<div class="synth-key key-black ds"></div>
-					<div class="synth-key key-black gap"></div>
-					<div class="synth-key key-black fs"></div>
-					<div class="synth-key key-black gs"></div>
-					<div class="synth-key key-black as"></div>
+					<div class="synth-key key-black" id="cs"></div>
+					<div class="synth-key key-black" id="ds"></div>
+					<div class="key-black gap"></div>
+					<div class="synth-key key-black" id="fs"></div>
+					<div class="synth-key key-black" id="gs"></div>
+					<div class="synth-key key-black" id="as"></div>
 				</div>
-				<!-- 
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div> -->
 			</div>
 		</div>
 	</div>
 
-	<script type="text/javascript" src="res/js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="res/js/materialize.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
