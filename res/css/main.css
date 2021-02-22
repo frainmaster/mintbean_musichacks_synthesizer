@@ -1,5 +1,5 @@
 body {
-	background-image: url("../../res/img/main.jpg");
+	background-image: url("../img/main.jpg");
 	font-family: Consolas;
 	color: #8fbc8f;
 }
@@ -9,7 +9,7 @@ body {
 .synth-body {
 	width: 800px;
 	height: 500px;
-	background-image: url("../../res/img/synth_body.jpg");
+	background-image: url("../img/synth_body.jpg");
 	border-radius: 10px;
 	margin: auto;
 }

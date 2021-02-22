@@ -4,49 +4,74 @@
 	<title>Synthesizer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="res/css/materialize.min.css" media="screen,projection">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection">
 	<link rel="stylesheet" type="text/css" href="res/css/main.css">
+	<script type="text/javascript" src="node_modules/tone/build/Tone.js"></script>
 </head>
 <body>
 	<div class="container">
 		<h2>Synthesizer</h2>
-		<p>By <a href="https://github.com/frainmaster">@frainmaster</a> & <a href="https://github.com/Ap0k4L1p5">@Ap0k4L1p5</a></p>
+		<p>By <a target="_blank" href="https://github.com/frainmaster">@frainmaster</a> & <a target="_blank" href="https://github.com/Ap0k4L1p5">@Ap0k4L1p5</a></p>
 		<div class="synth-body">
 			<div class="synth-key-body">
 				<div class="synth-key-set set-white">
-					<div class="synth-key key-white c"></div>
-					<div class="synth-key key-white d"></div>
-					<div class="synth-key key-white e"></div>
-					<div class="synth-key key-white f"></div>
-					<div class="synth-key key-white g"></div>
-					<div class="synth-key key-white a"></div>
-					<div class="synth-key key-white b"></div>
+					<div class="synth-key key-white" id="c4"></div>
+					<div class="synth-key key-white" id="d4"></div>
+					<div class="synth-key key-white" id="e4"></div>
+					<div class="synth-key key-white" id="f4"></div>
+					<div class="synth-key key-white" id="g4"></div>
+					<div class="synth-key key-white" id="a4"></div>
+					<div class="synth-key key-white" id="b4"></div>
 				</div>
 				<div class="synth-key-set set-black">
-					<div class="synth-key key-black cs"></div>
-					<div class="synth-key key-black ds"></div>
-					<div class="synth-key key-black gap"></div>
-					<div class="synth-key key-black fs"></div>
-					<div class="synth-key key-black gs"></div>
-					<div class="synth-key key-black as"></div>
+					<div class="synth-key key-black" id="c#4"></div>
+					<div class="synth-key key-black" id="d#4"></div>
+					<div class="key-black gap"></div>
+					<div class="synth-key key-black" id="f#4"></div>
+					<div class="synth-key key-black" id="g#4"></div>
+					<div class="synth-key key-black" id="a#4"></div>
 				</div>
-				<!-- 
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div>
-				<div class="synth-key key-black"></div>
-				<div class="synth-key key-white"></div> -->
 			</div>
+			<div style="width: 200px; margin: auto;"><input placeholder="Play custom key" type="text" name="key" id="key" style="color: white;"><button class="btn btn-small" id="play">play</button></div>
 		</div>
 	</div>
 
-	<script type="text/javascript" src="res/js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="res/js/materialize.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!-- <script type="text/javascript" src="res/js/main.js"></script> -->
+	<script>
+		
+		// const synth = new Tone.Synth({
+		// 	oscillator: {
+		// 		type: "amtriangle",
+		// 		harmonicity: 0.5,
+		// 		modulationType: "sine"
+		// 	},
+		// 	envelope: {
+		// 		attackCurve: "exponential",
+		// 		attack: 0.05,
+		// 		decay: 0.2,
+		// 		sustain: 0.2,
+		// 		release: 1.5,
+		// 	},
+		// 	portamento: 0.05
+		// }).toDestination();
+		const synth = new Tone.Synth().toDestination();
+		
+
+		$(document).ready(function() {
+			$(".synth-key").mousedown(function(e) {
+				// console.log($(this).attr("id"))
+				synth.triggerAttackRelease($(this).attr("id"), "8n");
+				e.stopPropagation();
+			});
+
+			$("#play").mousedown(function() {
+				if ($("#key").val()) synth.triggerAttackRelease($("#key").val(), "8n");
+				// console.log($("#key").val())
+			});
+		});
+
+	</script>
 </body>
 </html>
