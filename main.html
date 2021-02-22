@@ -24,15 +24,15 @@
 					<div class="synth-key key-white" id="b4"></div>
 				</div>
 				<div class="synth-key-set set-black">
-					<div class="synth-key key-black" id="c8"></div>
-					<div class="synth-key key-black" id="d7"></div>
+					<div class="synth-key key-black" id="c#4"></div>
+					<div class="synth-key key-black" id="d#4"></div>
 					<div class="key-black gap"></div>
-					<div class="synth-key key-black" id="f7"></div>
-					<div class="synth-key key-black" id="g7"></div>
-					<div class="synth-key key-black" id="a7"></div>
+					<div class="synth-key key-black" id="f#4"></div>
+					<div class="synth-key key-black" id="g#4"></div>
+					<div class="synth-key key-black" id="a#4"></div>
 				</div>
 			</div>
-			<div style="width: 100px; margin: auto;"><input type="text" name="key" id="key" style="color: white;"><button class="btn btn-small" id="play">play</button></div>
+			<div style="width: 200px; margin: auto;"><input placeholder="Play custom key" type="text" name="key" id="key" style="color: white;"><button class="btn btn-small" id="play">play</button></div>
 		</div>
 	</div>
 
@@ -60,14 +60,15 @@
 		
 
 		$(document).ready(function() {
-			$(".synth-key").on("click", function() {
-				console.log($(this).attr("id"))
+			$(".synth-key").mousedown(function(e) {
+				// console.log($(this).attr("id"))
 				synth.triggerAttackRelease($(this).attr("id"), "8n");
+				e.stopPropagation();
 			});
 
-			$("#play").on("click", function() {
-				synth.triggerAttackRelease($("#key").val(), "8n");
-				console.log($("#key").val())
+			$("#play").mousedown(function() {
+				if ($("#key").val()) synth.triggerAttackRelease($("#key").val(), "8n");
+				// console.log($("#key").val())
 			});
 		});
 
