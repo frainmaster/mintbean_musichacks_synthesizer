@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="res/css/main.css">
+	<script type="text/javascript" src="node_modules/tone/build/Tone.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -14,28 +15,62 @@
 		<div class="synth-body">
 			<div class="synth-key-body">
 				<div class="synth-key-set set-white">
-					<div class="synth-key key-white" id="c"></div>
-					<div class="synth-key key-white" id="d"></div>
-					<div class="synth-key key-white" id="e"></div>
-					<div class="synth-key key-white" id="f"></div>
-					<div class="synth-key key-white" id="g"></div>
-					<div class="synth-key key-white" id="a"></div>
-					<div class="synth-key key-white" id="b"></div>
+					<div class="synth-key key-white" id="c4"></div>
+					<div class="synth-key key-white" id="d4"></div>
+					<div class="synth-key key-white" id="e4"></div>
+					<div class="synth-key key-white" id="f4"></div>
+					<div class="synth-key key-white" id="g4"></div>
+					<div class="synth-key key-white" id="a4"></div>
+					<div class="synth-key key-white" id="b4"></div>
 				</div>
 				<div class="synth-key-set set-black">
-					<div class="synth-key key-black" id="cs"></div>
-					<div class="synth-key key-black" id="ds"></div>
+					<div class="synth-key key-black" id="c8"></div>
+					<div class="synth-key key-black" id="d7"></div>
 					<div class="key-black gap"></div>
-					<div class="synth-key key-black" id="fs"></div>
-					<div class="synth-key key-black" id="gs"></div>
-					<div class="synth-key key-black" id="as"></div>
+					<div class="synth-key key-black" id="f7"></div>
+					<div class="synth-key key-black" id="g7"></div>
+					<div class="synth-key key-black" id="a7"></div>
 				</div>
 			</div>
+			<div style="width: 100px; margin: auto;"><input type="text" name="key" id="key" style="color: white;"><button class="btn btn-small" id="play">play</button></div>
 		</div>
 	</div>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<!-- <script type="text/javascript" src="res/js/main.js"></script> -->
+	<script>
+		
+		// const synth = new Tone.Synth({
+		// 	oscillator: {
+		// 		type: "amtriangle",
+		// 		harmonicity: 0.5,
+		// 		modulationType: "sine"
+		// 	},
+		// 	envelope: {
+		// 		attackCurve: "exponential",
+		// 		attack: 0.05,
+		// 		decay: 0.2,
+		// 		sustain: 0.2,
+		// 		release: 1.5,
+		// 	},
+		// 	portamento: 0.05
+		// }).toDestination();
+		const synth = new Tone.Synth().toDestination();
+		
+
+		$(document).ready(function() {
+			$(".synth-key").on("click", function() {
+				console.log($(this).attr("id"))
+				synth.triggerAttackRelease($(this).attr("id"), "8n");
+			});
+
+			$("#play").on("click", function() {
+				synth.triggerAttackRelease($("#key").val(), "8n");
+				console.log($("#key").val())
+			});
+		});
+
+	</script>
 </body>
 </html>
