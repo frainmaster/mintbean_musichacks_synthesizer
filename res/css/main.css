@@ -14,17 +14,19 @@ body {
 	margin: auto;
 }
 
+.synth-ctrl {
+	height: 15em;
+}
+
 .synth-key-body {
 	width: 640px;
 	margin: auto;
-	padding-top: 15em;
 	display: flex;
 }
 
 .synth-key-set {
 	width: 490px;
 	display: flex;
-	/*margin: auto;*/
 }
 
 .synth-key {
@@ -33,6 +35,14 @@ body {
 
 .synth-key:hover {
 	cursor: pointer;
+}
+
+.synth-key-body .key-white:active {
+	background-color: #ffe4c4;
+}
+
+.synth-key-body .key-black:active {
+	background-color: #808080;
 }
 
 .set-white {
@@ -71,3 +81,11 @@ body {
 }
 
 .gap { visibility: hidden; }
+
+.key-white .key-label { padding-top: 11em; }
+.key-black .key-label { padding-top: 6.5em; }
+
+.key-hotkey {
+	color: #ff7f50;
+	display: none;
+}
