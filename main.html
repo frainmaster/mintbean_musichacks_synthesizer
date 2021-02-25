@@ -16,15 +16,25 @@
 			<div class="container synth-ctrl">
 				<table>
 					<tr>
-						<td rowspan="3">
-							<p class="range-field"><input type="range" min="A" max="Z" step="5"></p>
-						</td>
-						<td>Show hotkey</td>
-						<td>
-							<p><label><input type="checkbox" id="show_hotkey"><span></span></label></p>
-						</td>
+						<td class="right w50" style="padding-top: 20px; text-align: right;">Show hotkey</td>
+						<td class="w50"><p class="col"><label><input type="checkbox" id="show_hotkey"><span></span></label></p></td>
 					</tr>
-					<tr></tr><tr></tr>
+					<tr>
+						<td class="right w33"><input placeholder="Play custom key" type="text" id="key" style="padding-top: 10px;"></td>
+						<td class="right w33">
+							<p class="range-field" style="text-align: center;">
+								<input type="range" min="1" max="16" step="1" id="duration" value="8">
+								<span>Duration: <span id="dur"></span>n</span>
+							</p>
+						</td>
+						<td class="w33"><button class="btn btn-small" id="play">play</button></td>
+					</tr>
+					<!-- <tr>
+						<td colspan="100">
+							<input type="range" min="1" max="10" value="1" step="1">
+							<span class="thumb" style="display: none;"></span>
+						</td>
+					</tr> -->
 				</table>
 			</div>
 			<div class="synth-key-body">
@@ -46,7 +56,6 @@
 					<a class="synth-key key-black" hotkey="i" id="a#" key="a#4"><div class="key-label"><span class="key-hotkey">I</span><br><span class="active-key"></span></div></a>
 				</div>
 			</div>
-			<div style="width: 200px; margin: auto;"><input placeholder="Play custom key" type="text" name="key" id="key" style="color: white;"><button class="btn btn-small" id="play">play</button></div>
 		</div>
 	</div>
 
@@ -71,15 +80,12 @@
 		// }).toDestination();
 		const synth = new Tone.Synth().toDestination();
 
-		const hotkey = {
-			115: "s", 100: "d", 102: "f", 103: "g", 
-			104: "h", 106: "j", 107: "k", 101: "e", 
-			114: "r", 121: "y", 117: "u", 105: "i"
-		};
-
 		$(document).ready(function() {
 
 			getActiveKey();
+
+			$("#dur").text($("#duration").val());
+			$("#duration").on("change", function() { $("#dur").text($(this).val()) });
 
 			$(".synth-key").mousedown(function(e) {
 				// console.log($(this).attr("id"))
@@ -88,8 +94,8 @@
 			});
 
 			$("#play").mousedown(function() {
-				if ($("#key").val()) synth.triggerAttackRelease($("#key").val(), "8n");
-				// console.log($("#key").val())
+				let duration = $("#duration").val() ? $("#duration").val() : "8";
+				if ($("#key").val()) synth.triggerAttackRelease($("#key").val(), duration + "n");
 			});
 
 			$("#show_hotkey").on("change", function() {
@@ -98,9 +104,8 @@
 
 			$(document).keypress(function(e) {
 				$(".synth-key-body").find(".synth-key").each(function() {
-					if ($(this).attr("hotkey") == hotkey[e.keyCode]) {
+					if ($(this).attr("hotkey") == e.key) {
 						synth.triggerAttackRelease($(this).attr("key"), "8n");
-						console.log(this)
 					}
 				});
 			});

@@ -1,7 +1,21 @@
 body {
-	background-image: url("../img/main.jpg");
+	background-color: #afe8f7;
 	font-family: Consolas;
 	color: #8fbc8f;
+}
+
+td {
+	/*width: 33.3%;*/
+	padding: 5px;
+}
+
+table { border-collapse: inherit; }
+
+.w50 { width: 50%; }
+.w33 { width: 33%; }
+
+input[type='text'] {
+	color: white; text-align: right; font-family: consolas;
 }
 
 .container { text-align: center; }
